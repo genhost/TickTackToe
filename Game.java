@@ -1,0 +1,45 @@
+package TickTackToe;
+
+public class Game {
+	public static char[][] field = new char[3][3];
+	public static boolean lockField = false;
+	public static boolean turn = true;
+
+	public static void handleAction(int x, int y) {
+		x -= 1;
+		y -= 1;
+
+		if (lockField) return;
+		if (field[x][y] != 0) return;
+
+		if (turn) field[x][y] = 'x';
+		else field[x][y] = 'o';
+
+		turn = !turn;
+	}
+
+	public static boolean checkWin(char sign) {
+		for (int i = 0; i < 3; i++)
+			if ((field[i][0] == sign && field[i][1] == sign &&
+					field[i][2] == sign) ||
+					(field[0][i] == sign && field[1][i] == sign &&
+							field[2][i] == sign))
+				return true;
+		return (field[0][0] == sign && field[1][1] == sign &&
+				field[2][2] == sign) ||
+				(field[2][0] == sign && field[1][1] == sign &&
+						field[0][2] == sign);
+	}
+
+	public static boolean checkDraw() {
+		if (checkWin('x') || checkWin('o')) return false;
+		for (char[] i : field) {
+			for (char j : i) {
+				if (j == 0) return false;
+			}
+		}
+		return true;
+	}
+
+	public static char getCell(int x, int y) { return field[x - 1][y - 1]; }
+}
