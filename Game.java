@@ -1,22 +1,12 @@
 package TickTackToe;
 
+import java.util.Random;
+
 public class Game {
+	private static final Random random = new Random();
 	public static char[][] field = new char[3][3];
 	public static boolean lockField = false;
 	public static boolean turn = true;
-
-	public static void handleAction(int x, int y) {
-		x -= 1;
-		y -= 1;
-
-		if (lockField) return;
-		if (field[x][y] != 0) return;
-
-		if (turn) field[x][y] = 'x';
-		else field[x][y] = 'o';
-
-		turn = !turn;
-	}
 
 	public static boolean checkWin(char sign) {
 		for (int i = 0; i < 3; i++)
@@ -42,4 +32,19 @@ public class Game {
 	}
 
 	public static char getCell(int x, int y) { return field[x - 1][y - 1]; }
+
+	public static boolean isCellValid(int x, int y) {
+		if (x < 0 || y < 0 || x >= 3|| y >= 3)
+			return false;
+		return field[y][x] == 0;
+	}
+
+	public static void turnAI() {
+		int x, y;
+		do {
+			x = random.nextInt(3);
+			y = random.nextInt(3);
+		} while (!isCellValid(x, y) && !checkDraw());
+		field[y][x] = 'o';
+	}
 }

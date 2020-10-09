@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="240.0" xmlns="http://javafx.com/javafx/11.0.3-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TickTackToe.Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="340.0" prefWidth="240.0" xmlns="http://javafx.com/javafx/11.0.3-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TickTackToe.WithAiGameController">
    <children>
       <GridPane layoutY="30.0" prefHeight="250.0" prefWidth="250.0">
         <columnConstraints>
@@ -103,5 +103,6 @@
          </font>
       </Label>
       <Button fx:id="replayBtn" layoutX="25.0" layoutY="262.0" mnemonicParsing="false" onAction="#clickReplay" prefHeight="26.0" prefWidth="185.0" style="-fx-background-color: #ddd;" text="Replay" />
+      <Button fx:id="backBtn" layoutX="25.0" layoutY="300.0" mnemonicParsing="false" onAction="#handleBackBtnAction" prefHeight="26.0" prefWidth="185.0" style="-fx-background-color: #ddd;" text="Back" />
    </children>
 </Pane>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="82.0" prefWidth="240.0" xmlns="http://javafx.com/javafx/11.0.3-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TickTackToe.RemotelyGameController">
+   <children>
+      <Label fx:id="nRealizedLabel" layoutX="15.0" layoutY="14.0" text="This game function isn't realized yet" />
+      <Button fx:id="backBtn" layoutX="97.0" layoutY="40.0" mnemonicParsing="false" onAction="#handleBackBtnAction" style="-fx-background-color: #ddd;" text="Back" />
+   </children>
+</Pane>

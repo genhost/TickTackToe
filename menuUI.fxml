@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="137.0" prefWidth="240.0" xmlns="http://javafx.com/javafx/11.0.3-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TickTackToe.MenuController">
+   <children>
+      <Button fx:id="onOnePcBtn" layoutX="5.0" layoutY="33.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="26.0" prefWidth="230.0" style="-fx-background-color: #ddd;" text="On one pc" />
+      <Button fx:id="withAiBtn" layoutX="5.0" layoutY="68.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="26.0" prefWidth="230.0" style="-fx-background-color: #ddd;" text="AI" />
+      <Button fx:id="remotelyBtn" layoutX="5.0" layoutY="103.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="26.0" prefWidth="230.0" style="-fx-background-color: #ddd;" text="Remotely" />
+      <Label fx:id="chooseGameModeLabel" layoutX="50.0" layoutY="10.0" prefHeight="16.0" prefWidth="140.0" text="Select the type of game" />
+   </children>
+</Pane>

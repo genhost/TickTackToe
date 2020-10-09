@@ -2,15 +2,24 @@ package TickTackToe;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
-public class Controller {
+public class WithAiGameController {
+	private final Replica replica = new Replica();
+
 	@FXML
 	private Label turnLabel;
 
 	@FXML
 	private Button replayBtn;
+
+	@FXML
+	private Button backBtn;
 
 	@FXML
 	private Button cellBtn1;
@@ -32,9 +41,16 @@ public class Controller {
 	private Button cellBtn9;
 
 	@FXML
+	public void initialize() {
+		replayBtn.setText(replica.replay);
+		backBtn.setText(replica.back);
+		clickReplay();
+	}
+
+	@FXML
 	public void updateField() {
-		if (Game.turn) turnLabel.setText(Main.replica.crossTurn);
-		else turnLabel.setText(Main.replica.zeroTurn);
+		if (Game.turn) turnLabel.setText(replica.crossTurn);
+		else turnLabel.setText(replica.zeroTurn);
 		cellBtn1.setText(String.valueOf(Game.getCell(1, 1)));
 		cellBtn2.setText(String.valueOf(Game.getCell(1, 2)));
 		cellBtn3.setText(String.valueOf(Game.getCell(1, 3)));
@@ -46,21 +62,36 @@ public class Controller {
 		cellBtn9.setText(String.valueOf(Game.getCell(3, 3)));
 
 		if (Game.checkWin('x')) {
-			turnLabel.setText(Main.replica.crossWin);
+			turnLabel.setText(replica.crossWin);
 			Game.lockField = true;
 		} else if (Game.checkWin('o')) {
-			turnLabel.setText(Main.replica.zeroWin);
+			turnLabel.setText(replica.zeroWin);
 			Game.lockField = true;
 		} else if (Game.checkDraw()) {
-			turnLabel.setText(Main.replica.draw);
+			turnLabel.setText(replica.draw);
 			Game.lockField = true;
 		}
+	}
 
+	public void handleCellBtnAction(int x, int y) {
+		x -= 1;
+		y -= 1;
 
+		if (Game.lockField) return;
+		if (Game.field[x][y] != 0) return;
+
+		if (Game.turn) Game.field[x][y] = 'x';
+
+		Game.turn = !Game.turn;
+		updateField();
+		if (Game.checkDraw() || Game.checkWin('x') || Game.checkWin('o')) return;
+		Game.turnAI();
+		Game.turn = !Game.turn;
+		updateField();
 	}
 
 	@FXML
-	public void clickReplay(ActionEvent event) {
+	public void clickReplay() {
 		Game.field = new char[3][3];
 		Game.lockField = false;
 		Game.turn = true;
@@ -68,56 +99,58 @@ public class Controller {
 	}
 
 	@FXML
+	public void handleBackBtnAction(ActionEvent event) throws Exception {
+		Stage stage;
+		Parent root;
+		stage = (Stage) backBtn.getScene().getWindow();
+		root = FXMLLoader.load(getClass().getResource("menuUI.fxml"));
+		Scene scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}
+
+	@FXML
 	public void clickCellBtn1(ActionEvent event) {
-		Game.handleAction(1, 1);
-		updateField();
+		handleCellBtnAction(1, 1);
 	}
 
 	@FXML
 	public void clickCellBtn2(ActionEvent event) {
-		Game.handleAction(1, 2);
-		updateField();
+		handleCellBtnAction(1, 2);
 	}
 
 	@FXML
 	public void clickCellBtn3(ActionEvent event) {
-		Game.handleAction(1, 3);
-		updateField();
+		handleCellBtnAction(1, 3);
 	}
 
 	@FXML
 	public void clickCellBtn4(ActionEvent event) {
-		Game.handleAction(2, 1);
-		updateField();
+		handleCellBtnAction(2, 1);
 	}
 
 	@FXML
 	public void clickCellBtn5(ActionEvent event) {
-		Game.handleAction(2, 2);
-		updateField();
+		handleCellBtnAction(2, 2);
 	}
 
 	@FXML
 	public void clickCellBtn6(ActionEvent event) {
-		Game.handleAction(2, 3);
-		updateField();
+		handleCellBtnAction(2, 3);
 	}
 
 	@FXML
 	public void clickCellBtn7(ActionEvent event) {
-		Game.handleAction(3, 1);
-		updateField();
+		handleCellBtnAction(3, 1);
 	}
 
 	@FXML
 	public void clickCellBtn8(ActionEvent event) {
-		Game.handleAction(3, 2);
-		updateField();
+		handleCellBtnAction(3, 2);
 	}
 
 	@FXML
 	public void clickCellBtn9(ActionEvent event) {
-		Game.handleAction(3, 3);
-		updateField();
+		handleCellBtnAction(3, 3);
 	}
 }

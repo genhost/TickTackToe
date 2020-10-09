@@ -6,21 +6,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.awt.*;
-
 public class Main extends Application {
-    public static Replica replica = new Replica();
-
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("gui.fxml"));
-        Scene scene = new Scene(root);
+        Parent menuParent = FXMLLoader.load(getClass().getResource("menuUI.fxml"));
+        Scene menuScene = new Scene(menuParent);
 
         primaryStage.setTitle("TickTackToe");
-        primaryStage.setScene(scene);
+        primaryStage.setScene(menuScene);
         primaryStage.show();
     }
-
 
     public static void main(String[] args) {
         launch(args);
