@@ -25,7 +25,6 @@ public class MenuController {
 		chooseGameModeLabel.setText(replica.gameMode);
 		onOnePcBtn.setText(replica.onePcGameMode);
 		withAiBtn.setText(replica.aiGameMode);
-		remotelyBtn.setText(replica.remotelyGameMode);
 	}
 
 	@FXML
@@ -36,12 +35,9 @@ public class MenuController {
 		if (event.getSource() == onOnePcBtn) {
 			stage = (Stage) onOnePcBtn.getScene().getWindow();
 			root = FXMLLoader.load(getClass().getResource("onePcGameUI.fxml"));
-		} else if (event.getSource() == withAiBtn) {
+		} else {
 			stage = (Stage) withAiBtn.getScene().getWindow();
 			root = FXMLLoader.load(getClass().getResource("withAiGameUI.fxml"));
-		} else {
-			stage = (Stage) remotelyBtn.getScene().getWindow();
-			root = FXMLLoader.load(getClass().getResource("remotelyGameUI.fxml"));
 		}
 		Scene scene = new Scene(root);
 		stage.setScene(scene);

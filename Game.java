@@ -9,16 +9,6 @@ public class Game {
 	public static boolean lockField = false;
 	public static boolean turn = true;
 
-	public static char[][] parseField(String stringField) {
-		String[] str = stringField.split(" ");
-		char[][] arr = {
-				{str[0].charAt(0), str[1].charAt(0), str[2].charAt(0)},
-				{str[3].charAt(0), str[4].charAt(0), str[5].charAt(0)},
-				{str[6].charAt(0), str[7].charAt(0), str[8].charAt(0)}
-		};
-		return arr;
-	}
-
 	public static boolean checkWin(char sign) {
 		for (int i = 0; i < 3; i++)
 			if ((field[i][0] == sign && field[i][1] == sign &&
