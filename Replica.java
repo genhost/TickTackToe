@@ -7,7 +7,6 @@ public class Replica {
 			draw, crossTurn, zeroWin, crossWin, zeroTurn, replay, nRealized, back;
 
 	Replica() {
-		Locale.setDefault(new Locale("ru"));
 		language = Locale.getDefault().getLanguage();
 		if (language.equals("ru")) {
 			gameMode = "Выберите режим игры";
